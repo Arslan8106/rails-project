@@ -9,7 +9,7 @@
 
 <% @articles.each do |article| %>
 <tr>
-<td> <b> <%= article.title%></b> </td>
+<td> <h3><b> <%= article.title%></b> </h3></td>
 <td> <%= article.descrption%> </td>
 <td> <button><%= link_to 'Show',  article_path(article) %>  </button></td> 
 <td> <button><%= link_to 'Edit',  edit_article_path(article) %> </button></td>
