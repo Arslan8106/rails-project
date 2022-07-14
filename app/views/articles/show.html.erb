@@ -1,17 +1,14 @@
-<h1>Showing selected article</h1>
+<div class="midd">
+<h2> Title: <%= @article.title %> </h2>
+<div class="col-sm-13 border">
+<h4 class="center description" style="background-color:#F5F0E1"><strong>Description</strong></h4>
 
-<p>
+ <%= simple_format(@article.descrption) %>
+ <br>
+<div class="article-actions">
 
-Title: <%= @article.title %>
-
-</p>
-
-<p>
-
-Description: <%= @article.descrption %>
-
-</p>
-<ul>
-<li> <%= link_to 'Back to article listing',  articles_path %>  </li>
-<li>  <%= link_to 'Edit article',  edit_article_path(@article) %> </li>
-</ul>
+<%= link_to 'Edit article',  edit_article_path(@article) , class: "btn btn-xs btn-danger" %> 
+<%= link_to 'Back to article listing',  articles_path , class: 'btn btn-primary' %>  
+</div>
+</div>
+</div>

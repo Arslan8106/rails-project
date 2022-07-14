@@ -13,16 +13,41 @@
 </ul>
 
 <% end %>
+<div class='row'>
+<div class = 'col-xs-12'>
 <%= form_for @article do |f| %>
-<p>
-<%= f.label :title %>
-<%= f.text_field :title%>
-</p>
-<p>
+
+<div class="from-group">
+<div class="control-label col-sm-2">
+<%= f.label :title%>
+</div>
+<div class="col-sm-11">
+<%= f.text_field :title, class: "form-control", placeholder: "Title of article", autofocus: true %>
+</div>
+</div>
+<br>
+<div class="from-group">
+<div class="control-label col-sm-2">
 <%= f.label :description %> 
-<%= f.text_area :descrption%>
-</p>
-<p>
-<%= f.submit  %> <p><%= link_to 'Back to article listing',  articles_path %> </p>  
-</p>
+
+</div>
+<div class="col-sm-11">
+<%= f.text_area :descrption , rows: 8,  class: "form-control", placeholder: "Body of article"%>
+</div>
+</div>
+<br>
+<div class ="abc">
+<div class="form-group">
+<div class="col-sm-10">
+<%= f.submit class: 'btn btn-danger' %>
+</div>
+</div>
+
+<%= link_to 'Back To Articles',  articles_path, class: 'btn btn-danger'%> 
+</div>
 <% end %>
+
+
+</div>
+</div>
+</div>
