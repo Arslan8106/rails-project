@@ -3,15 +3,21 @@
 <% @articles.each do |article| %>
 <br>
 <div class="row">
-<div class="col-xs-8 col-xs-offset-2 border" style="background-color:#F5F0E1">
+<div class="col-sm-10 d-block mx-auto border" style="background-color:#F5F0E1">
 
 <div class="well well-lg">
 <div class="article-title">
-<%= link_to article.title, article_path(article) %>
+<%= link_to article.title, article_path(article), style:"color:#990011FF;text-transform:uppercase" %>
+</div>
+<div class="article-body">
+<% if article.image.attached? %>
+<%= image_tag article.image, :size => "400x250" ,class: 'd-block mx-auto' %>
+<% end %>
 </div>
 <div class="article-body">
 <%= truncate(article.descrption, length: 500) %>
 </div>
+
 <div class="abcd">
 <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-primary" %>
 <%= button_to "Delete this article", article_path(article), method: :delete,

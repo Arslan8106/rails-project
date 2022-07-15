@@ -1,5 +1,11 @@
 <div class="midd">
 <h2> Title: <%= @article.title %> </h2>
+
+<div class="article-body">
+<% if @article.image.attached? %>
+<%= image_tag @article.image,class: 'd-block mx-auto', :size => "300x200" %>
+<% end %>
+</div>
 <div class="col-sm-13 border">
 <h4 class="center description" style="background-color:#F5F0E1"><strong>Description</strong></h4>
 
