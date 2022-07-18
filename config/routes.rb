@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   root 'welcome#home'
   get 'about', to: 'welcome#about'
   resources :articles
-  
+  get '/capitalize', to: 'articles_controller#capitalize', as: 'capitalize'
+
 end
