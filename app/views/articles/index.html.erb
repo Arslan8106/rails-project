@@ -16,8 +16,13 @@
 </div>
 <div class="article-body">
 <%= truncate(article.descrption, length: 500) %>
+<hr>
+<div class="article-meta-details">
+<u> <b> <small> Created by:</b></u> <%=article.user.username if article.user%> </small> <br>
+<u> <b> <small> Posted Time:</b></u> <%= time_ago_in_words(article.created_at) %> ago</small>  <br>
+<u> <b> <small> Last updated:</b></u> <%= time_ago_in_words(article.updated_at)%> ago </small> <br>
 </div>
-
+</div>
 <div class="abcd">
 <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-primary" %>
 <%= button_to "Delete this article", article_path(article), method: :delete,

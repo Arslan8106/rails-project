@@ -18,7 +18,13 @@
  *= require_self
  */
 
+ .article-meta-details {
 
+   border-top: 1px solid #eaeaea;
+   
+   margin-top: 15px;
+   
+   }
 
 .abc {
    display: flex;
