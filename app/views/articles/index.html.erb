@@ -9,9 +9,9 @@
 <div class="article-title">
 <%= link_to article.title, article_path(article), style:"color:#990011FF;text-transform:uppercase" %>
 </div>
-<div class="article-body">
+<div class="card">
 <% if article.image.attached? %>
-<%= image_tag article.image, :size => "400x250" ,class: 'd-block mx-auto' %>
+<%= image_tag article.image, :size => "500x300" ,class: 'd-block mx-auto' %>
 <% end %>
 </div>
 <div class="article-body">
