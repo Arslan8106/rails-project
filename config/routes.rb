@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  root 'welcome#home'
+  root 'users#new'
   get 'about', to: 'welcome#about'
   resources :articles
-  get '/capitalize', to: 'articles_controller#capitalize', as: 'capitalize'
+  get 'signup', to: 'users#new'
+  resources :users, except: [:new]
+
 
 end

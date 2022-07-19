@@ -3,7 +3,7 @@
 
 <div class="article-body">
 <% if @article.image.attached? %>
-<%= image_tag @article.image,class: 'd-block mx-auto', :size => "300x200" %>
+<%= image_tag @article.image,class: 'd-block mx-auto', :size => "400x300" %>
 <% end %>
 </div>
 <div class="col-sm-13 border">
@@ -12,7 +12,22 @@
  <%= simple_format(@article.descrption) %>
  <br>
 <div class="article-actions">
+<% if @article.user%>
+<ul class="container">
 
+<div class="center">
+
+<br>
+<li> Created by: </li>
+<%= link_to(gravatar_for(@article.user), user_path(@article.user)) if @article.user %>
+<div class="article-title">
+<%= link_to(@article.user.username, user_path(@article.user)) if @article.user%>
+</div>
+<small><%= pluralize(@article.user.articles.count, "article") if @article.user.articles %></small>
+
+
+</ul>
+<%end%>
 <%= link_to 'Edit article',  edit_article_path(@article) , class: "btn btn-xs btn-danger" %> 
 <%= link_to 'Back to article listing',  articles_path , class: 'btn btn-primary' %>  
 </div>

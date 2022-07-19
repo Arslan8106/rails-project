@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @user = User.find(params[:id])
   end
 
   # GET /users/new
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
   end
 
   # POST /users or /users.json
@@ -36,16 +38,14 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    respond_to do |format|
+    @user = User.find(params[:id])
       if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        flash[:success] = "Your account was updated successfully"
+        redirect_to articles_path
+        else
+          render 'edit'
+        end
       end
-    end
-  end
 
   # DELETE /users/1 or /users/1.json
   def destroy
@@ -65,6 +65,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :email)
+      params.require(:user).permit(:username, :email, :password)
     end
 end

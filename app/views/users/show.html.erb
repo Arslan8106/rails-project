@@ -1,10 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @user %>
-
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
+<h1> Welcome to User <%= @user.username%>'s page </h1>
+<div class="row">
+<div class = "center">
+<%= gravatar_for @user%>
 </div>
+</div>
+<h2><%= @user.username%>'s articles </h2>
+<%= render 'articles/article', obj: @user.articles%>
