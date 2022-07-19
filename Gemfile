@@ -30,7 +30,8 @@ gem "jbuilder"
 
 gem 'jquery-rails'
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
+gem 'bootstrap-will_paginate', '1.0.0'
 gem 'pry', '~> 0.13.1'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

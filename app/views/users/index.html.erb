@@ -1,8 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>All Alpha Bloggers</h1>
-
-
+<br>
 <% @users.each do |user| %>
 
 <ul class="container">
@@ -16,7 +15,10 @@
 </div>
 <small><%= pluralize(user.articles.count, "article") if user.articles %></small>
 </div>
-
 </ul>
+
 <% end %>
+<div class="col-sm-2 d-block mx-auto ">
+<%= paginate @users %>
+</div>
 </div>

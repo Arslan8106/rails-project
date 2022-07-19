@@ -1,2 +1,10 @@
-<h1>Listing all articles </h1>
+<h1 >Listing all articles</h1>
+<div>
+  <%= paginate @articles%>
+</div>
 <%= render 'article', obj: @articles %>
+
+<div>
+<br>
+  <%= paginate @articles %>
+</div>

@@ -3,12 +3,14 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+
+    @users= User.page(params[:page]).per(5)
   end
 
   # GET /users/1 or /users/1.json
   def show
-    @user = User.find(params[:id])
+    @users = User.find(params[:id])
+    # @user_articles = @users.articles.page(params[:page]).per(5)
   end
 
   # GET /users/new
