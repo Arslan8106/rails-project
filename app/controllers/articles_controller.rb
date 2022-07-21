@@ -8,28 +8,33 @@ class ArticlesController < ApplicationController
 
         # @articles = Article.paginate(page: params[:page], :per_page => 5)
 
-        @articles= Article.page(params[:page]).per(5)
+        @articles= Article.page(params[:page]).per(6)
     end
 
     def create
         @article = Article.new(article_params)
         @article.user = User.find(5)
+        respond_to do |format|
         if @article.save
-            flash[:notice] = "Article was successfully created"
-            redirect_to article_path(@article)
-       else
-        render :new
-       end
+            format.html { redirect_to article_path(@article), notice: "Atricle was successfully created." }  
+          else
+            format.html { render :new, status: :unprocessable_entity }
+          end
+        
+        end
+
+       
     end
 
     def update
+        respond_to do |format|
         if @article.update(article_params)
-            flash[:notice] = "Article was successfully updated"
-            redirect_to article_path(@article)
+            format.html { redirect_to article_path(@article), notice: "Atricle was successfully updated." }  
+    
        else
-        render :edit
+        format.html { render :edit, status: :unprocessable_entity }
        end
-
+    end
     end
 
     def show
@@ -38,7 +43,9 @@ class ArticlesController < ApplicationController
 
     def destroy
         @article.destroy
-        redirect_to articles_path, status: :see_other
+        respond_to do |format|
+            format.html { redirect_to articles_path, notice: "Article was successfully deleted.", status: :see_other}
+        end
       end
 
     def edit

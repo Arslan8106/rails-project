@@ -12,7 +12,7 @@ gem "sprockets-rails"
 
 gem "image_processing"
 gem "bootstrap-sass", "~> 3.4.1"
-
+gem "erb-formatter"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -85,3 +85,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem 'pry-nav'

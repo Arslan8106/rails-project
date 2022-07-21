@@ -33,8 +33,11 @@
 }
 .abcd {
    display: flex;
-   column-gap: 0.5rem;
-   flex-direction: row;
+   column-gap: 1.5rem;
+   row-gap: 10px;
+   flex-direction: column;
+   
+   
 }
 
    
@@ -189,6 +192,21 @@
          padding: 8px 16px;
          text-decoration: none;
          transition: background-color .3s;
-         border: 1px solid #ddd;
          font-size: 22px;
+       }
+
+
+       .parent {
+         display: flex;
+         flex-wrap: wrap;
+       }
+       
+       .child {
+      
+         flex: 1 0 21%;
+         text-align: center;
+          /* explanation below */
+         margin: 15px;
+         height: 650px;
+         margin-bottom: 50px;
        }
