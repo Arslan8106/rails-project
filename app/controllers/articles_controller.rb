@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
 
     def create
         @article = Article.new(article_params)
-        @article.user = User.find(5)
+        @article.user = User.find(13)
         respond_to do |format|
         if @article.save
             format.html { redirect_to article_path(@article), notice: "Atricle was successfully created." }  
