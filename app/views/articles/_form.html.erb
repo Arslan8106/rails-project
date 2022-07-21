@@ -1,7 +1,7 @@
 <% if @article.errors.any? %>
   <ul>
     <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+      <li style="color: #990011FF"><%= msg %></li>
     <% end %>
   </ul>
 <% end %>
@@ -13,7 +13,6 @@
         <div class="control-label col-sm-2">
           <%= f.label :title%>
         </div>
-          <h1><%=@a1%></h1>
         <div class="col-sm-11">
           <%= f.text_field :title, class: "form-control",  placeholder: "Title of article", autofocus: true %>
         </div>

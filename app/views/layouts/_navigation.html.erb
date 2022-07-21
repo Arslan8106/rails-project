@@ -1,31 +1,44 @@
 <nav class="navbar navbar-expand-lg" style="background-color:#F5F0E1">
-  <div class="container-fluid">
-     <%= link_to "Rails blog", root_path, class: "navbar-brand", id: "logo" %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to 'Article',  articles_path, class: "nav-link"%>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <div class="container-fluid" style="display:flex; justify-content:left ">
+    <%if logged_in?%>
+      <%= link_to "Rails blog", root_path, class: "navbar-brand", id: "logo" %>     
+      <%= link_to 'Article',  articles_path, class: "nav-link"%>
+        <li class="nav-item dropdown btn">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Your Profile
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"><%= link_to "Create New Article", new_article_path,style:"color:#990011FF;text-decoration:none;"  %></a>
+          <a class="dropdown-item"><%= link_to "View Articles", articles_path ,style:"color:#990011FF;text-decoration:none;" %></a>
+        </div>
+      </li>
+    <%else%>
+      <a class="navbar-brand", id= "logo" onclick= myFunction() >Rails blog</a>
+      <a class="navbar-brand", onclick= myFunction() style="color:#990011FF" >Article</a>
+      <script>
+        function myFunction() {
+
+        alert("Please Login or Signup to View")
+         }
+      </script>
+    <%end%>
+    </div>
+    <div class="abcd">
+      <%if logged_in?%>
+        <li class="nav-item dropdown btn btn-danger">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choices
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><%= link_to 'Create New Article',  new_article_path, class: "dropdown-item"%></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item"><%= link_to "View your profile", user_path(current_user),style:"color:#990011FF;text-decoration:none;"  %></a>
+            <a class="dropdown-item"><%= link_to "Edit your profile", edit_user_path(current_user) ,style:"color:#990011FF;text-decoration:none;" %></a>
+          </div>
         </li>
-      
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
         <%= link_to 'Logout', logout_path, method: :delete,  class: "btn btn-danger" %>
-      </form>
+      <%else%>
+        <%= link_to 'Login', login_path,  class: "btn btn-danger" %>
+        <%= link_to 'Signup', signup_path,  class: "btn btn-danger" %>
+      <%end%>
     </div>
   </div>
 </nav>

@@ -7,16 +7,15 @@ class SessionsController < ApplicationController
     def create
      
         user = User.find_by(email: params[:session][:email])
+        respond_to do |format|
         if user && user.authenticate(params[:session][:password])
            session[:user_id] = user.id
-          flash[:success] = "You have successfully logged in"
-          redirect_to users_path(user)
+           format.html{redirect_to users_path(user), notice: "You have successfully logged in." } 
         else
-          flash.now[:danger] = "Wrong email or password"
-          render "new"
+          format.html{render :new, notice:"Wrong email or password" } 
         end
+      end
    
-        
         end
         
         def destroy 
@@ -25,5 +24,6 @@ class SessionsController < ApplicationController
         redirect_to signup_path
         
         end
+    
 end
 

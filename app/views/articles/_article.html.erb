@@ -1,44 +1,43 @@
+ 
+<div class="waviy">
+  <span class="head1">Listing Articles</span>
+</div>
 <div class="parent">
-  
-    <% obj.each do |article| %>
+  <% obj.each do |article| %>
     <div class="child">
       <br>
       <div class="row">
-        <div class="col-sm-11 d-block mx-auto border rounded" style="background-color:#F5F0E1">
+        <div class="col-sm-11 d-block mx-auto border rounded" style="background-color: rgba(255, 255, 255, .75)">
           <div class="well well-lg">
-            <div class="article-title">
-              <%= link_to article.title, article_path(article), style:"color:#990011FF;" %>
+            <div class="article-title effect-5">
+              <%= link_to article.title, article_path(article), style:"color:#990011FF;text-decoration:none;" %>
             </div>
-            <div class="card">
+            <div>
               <% if article.image.attached? %>
-                <%= image_tag article.image, :size => "300x200" ,class: 'd-block mx-auto'%>
+                <%= image_tag article.image, :size => "300x200" ,class: 'd-block mx-auto effect-6 border rounded'%>
               <% end %>
             </div>
-            <div class="article-body">
-              <%= truncate(article.descrption, length: 300) %>
-               <hr style="color: #990011FF">
-              <div class="article-meta-details">
+            <div>
+              <hr style="color: #990011FF">
+              <%= truncate(article.descrption, length: 250,  class:'style')%>
+              <hr style="color: #990011FF">
+              <div>
                 <u> <b> <small> Created by:</b></u> <%=article.user.username if article.user%> </small> <br>
                 <u> <b> <small> Posted Time:</b></u> <%= time_ago_in_words(article.created_at) %> ago</small>  <br>
-                <u> <b> <small> Last updated:</b></u> <%= time_ago_in_words(article.updated_at)%> ago </small> <br>
               </div>
             </div>
-            <div class="abcd">
-            
-            <%= link_to "Edit", edit_article_path(article), class: "btn btn-primary" %>
+            <%= link_to "Edit", edit_article_path(article), class:"effect effect-5"  %>
             <%= link_to "Delete", article_path(article), method: :delete,
               data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-              class: "btn btn-danger" %>
-              </div>
+              class:"effect effect-5" %>
           </div>
           <br>
         </div>
       </div>
-        </div>
-    <% end %>
-    <br>
-
+    </div>
+  <% end %>
+  <br>
 </div>
 <br>
-<br>
+<hr>
 <%= link_to 'Create New Article',  new_article_path , class: 'btn btn-danger'%>

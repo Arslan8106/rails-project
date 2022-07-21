@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  
+  before_action :set_user, only: %i[ show edit update ]
 
   # GET /users or /users.json
   def index
@@ -9,18 +10,19 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
-    @users = User.find(params[:id])
+    
     # @user_articles = @users.articles.page(params[:page]).per(5)
   end
 
   # GET /users/new
   def new
+    redirect_to articles_path if logged_in?
     @user = User.new
   end
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    
   end
 
   # POST /users or /users.json
@@ -40,7 +42,7 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    @user = User.find(params[:id])
+  
       if @user.update(user_params)
         flash[:success] = "Your account was updated successfully"
         redirect_to articles_path
@@ -69,4 +71,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :email, :password)
     end
+   
+    
 end

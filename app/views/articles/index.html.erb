@@ -1,11 +1,9 @@
-<h1 style="text-transform:capitalize">Listing all articles</h1>
-
 <div>
-
+<%= render 'home', class: 'front' %>
 </div>
 <%= render 'article', obj: @articles %>
-
   <br>
-
   <br>
   <%= paginate @articles %>
+
+ 
