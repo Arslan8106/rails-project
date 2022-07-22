@@ -9,15 +9,24 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     
     <%=javascript_include_tag "application" %>
   </head>
  
-  <body style="background-color: #ffecd1">
+  <body style="background-color: rgb(235, 235, 235)"> 
+  <%# #ffecd1 %>
     <%= render 'layouts/navigation' %>
-    <%= render 'layouts/messages' %>
+    <br>
+    <br>
+  
     <br>
     <div class="container" id = "footer1">
+      <%= render 'layouts/messages' %>
     <%= yield %>
     </div>
     

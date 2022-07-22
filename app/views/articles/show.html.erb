@@ -1,30 +1,41 @@
-<div class="midd">
-  <h2> Title: <%= @article.title %> </h2>
-  <div class="article-body">
-    <% if @article.image.attached? %>
-      <%= image_tag @article.image,class: 'd-block mx-auto', :size => "400x300" %>
-    <% end %>
-  </div>
-  <div class="col-sm-13 border">
-    <h4 class="center description" style="background-color:#F5F0E1"><strong>Description</strong></h4>
-    <%= simple_format(@article.descrption) %>
-    <br>
-    <div class="article-actions">
-      <% if @article.user%>
-        <ul class="container">
-          <div class="center">
-            <br>
-            <hr>
-            <h3> Created by: </h3>
-            <%= link_to(gravatar_for(@article.user), user_path(@article.user)) if @article.user %>
-            <div class="article-title">
-              <%= link_to(@article.user.username, user_path(@article.user)) if @article.user%>
-            </div>
-            <small><%= pluralize(@article.user.articles.count, "article") if @article.user.articles %></small>
-          </ul>
-        <%end%>
-        <%= link_to 'Edit article',  edit_article_path(@article) , class: "btn btn-xs btn-danger" %>
-        <%= link_to 'Back to article listing',  articles_path , class: 'btn btn-primary' %>
+
+<br>
+
+<div class="row">
+  <div class="col-sm-8 d-block mx-auto border rounded" style="background-color: rgba(255, 255, 255, .75)">
+  
+        <h2 class="head1"style="color:#990011FF"><%= @article.title %></h2>
+  
+    <div class="well well-lg">
+      <div class="article-body">
+        <% if @article.image.attached? %>
+          <%= image_tag @article.image, :size => "600x400", class: 'd-block mx-auto effect-6 border rounded'%>
+        <% end %>
+      </div>
+      <div class="col-sm-13 border">
+        <h4 class="center description" style="background-color:wheat"><strong>Description</strong></h4>
+        <%= simple_format(@article.descrption) %>
+        <br>
+        <div class="article-actions">
+          <% if @article.user%>
+            <ul class="container">
+              <div class="center">
+                <br>
+                <hr>
+                <h3> Created by: </h3>
+                <%= link_to(gravatar_for(@article.user), user_path(@article.user)) if @article.user%>
+                <div class="article-title">
+                  <%= link_to(@article.user.username, user_path(@article.user), style:"color:black") if @article.user%>
+                </div>
+                <p><%= pluralize(@article.user.articles.count, "article") if @article.user.articles %></p>
+              </ul>
+            <%end%>
+            <% if logged_in? && current_user == @article.user %>
+              <%= link_to 'Edit',  edit_article_path(@article) ,class:"effect effect-5" %>
+            <%end%>
+            <%= link_to 'Back',  articles_path ,  class:"effect effect-5" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

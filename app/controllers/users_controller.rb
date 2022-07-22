@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+  before_action :require_user, except: %i[new create]
   before_action :set_user, only: %i[ show edit update ]
 
   # GET /users or /users.json
@@ -32,6 +32,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { redirect_to user_url(@user), notice: "User was successfully created." }
         
       else
@@ -42,15 +43,14 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-  
+    respond_to do |format|
       if @user.update(user_params)
-        flash[:success] = "Your account was updated successfully"
-        redirect_to articles_path
+        format.html { redirect_to articles_path, notice: "Your account was updated successfully" }
         else
-          render 'edit'
+          format.html { render :edit, status: :unprocessable_entity }
         end
       end
-
+    end
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy

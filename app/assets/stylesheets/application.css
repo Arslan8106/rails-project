@@ -32,7 +32,7 @@
 
 .abc {
    display: flex;
-   column-gap: 19.5rem;
+   column-gap: 29.5rem;
    flex-direction: row;
 }
 .abcd {
@@ -213,6 +213,7 @@
        .parent {
          display: flex;
          flex-wrap: wrap;
+         column-gap: 15px;
        }
        
        .child {
@@ -221,7 +222,7 @@
          text-align: center;
           /* explanation below */
          margin: 15px;
-         height: 570px;
+         height: 490px;
          margin-bottom: 50px;
        }
 
@@ -233,12 +234,13 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 500px;
+           
             
         }
          .slideshow-image {
             border: 5px solid  rgba(255, 255, 255, .75);
             position: absolute;
-            width: 1200px;
+            width: 1100px;
             height: 500px;
             background: no-repeat 50% 50%;
             background-size: cover;
@@ -381,11 +383,12 @@
         
          transform: translate3d(-50%, -50%, 10);
          z-index: 99;
-         text-align: center;
          font-family: Raleway, sans-serif;
          font-weight: 300;
          line-height: 1.5;
          text-transform: uppercase;
+         text-align: center;
+
         }
          
 
@@ -416,7 +419,7 @@
          
        }
        .effect.effect-5:before {
-         content: "\f178";
+         content: " ";
          font-family: FontAwesome;
          display: -webkit-box;
          display: -ms-flexbox;
@@ -448,8 +451,8 @@
          text-indent: 30px;
        }
        .effect.effect-5:hover:before {
-         -webkit-transform: scale(1, 1);
-                 transform: scale(1, 1);
+         -webkit-transform: scale(1, 0);
+                 transform: scale(1, 2);
          text-indent: 0;
          
          
@@ -495,7 +498,7 @@
        
        .waviy {
          position: relative;
-         margin-left: 450px;
+         margin-left: 350px;
        }
        .waviy span {
          position: relative;

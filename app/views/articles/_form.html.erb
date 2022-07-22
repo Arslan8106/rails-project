@@ -5,13 +5,12 @@
     <% end %>
   </ul>
 <% end %>
-
 <div class='row'>
   <div class = 'col-xs-12'>
     <%= form_for @article do |f| %>
       <div class="from-group">
         <div class="control-label col-sm-2">
-          <%= f.label :title%>
+              <span class="head1"><%= f.label :Title%></span>
         </div>
         <div class="col-sm-11">
           <%= f.text_field :title, class: "form-control",  placeholder: "Title of article", autofocus: true %>
@@ -20,7 +19,7 @@
       <br>
       <div class="from-group">
         <div class="control-label col-sm-2">
-          <%= f.label :description %>
+               <span class="head1"><%= f.label :Description%></span>
         </div>
         <div class="col-sm-11">
           <%= f.text_area :descrption , rows: 8, class: "form-control", placeholder: "Body of article"%>
@@ -29,22 +28,17 @@
       <br>
       <div class="from-group">
         <div class="control-label col-sm-2">
-          <%= f.label :image %>
+               <span class="head1"><%= f.label :Image%></span>
         </div>
         <div class="col-sm-11">
           <%= f.file_field :image , rows: 8, style:"border 2px"%>
         </div>
       </div>
       <br>
-      <div class ="abc">
-        <div class="form-group">
-          <div class="col-sm-10">
-            <%= f.submit  class: 'btn btn-danger' %>
-          </div>
-        </div>
-        <%= link_to 'Back To Articles',  articles_path, class: 'btn btn-danger'%>
+      <div class ="abcd">
+        <%= f.submit class: "btn-sm effect effect-5" %>
+        <%= link_to 'Back',  articles_path, class: "btn-sm py-2 effect effect-5"%>
       </div>
     <% end %>
   </div>
 </div>
-

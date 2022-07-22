@@ -6,7 +6,7 @@
     <div class="child">
       <br>
       <div class="row">
-        <div class="col-sm-11 d-block mx-auto border rounded" style="background-color: rgba(255, 255, 255, .75)">
+        <div class="col-sm-15 d-block mx-auto border rounded" style="background-color: rgba(255, 255, 255, .75)">
           <div class="well well-lg">
             <div class="article-title effect-5">
               <%= link_to article.title, article_path(article), style:"color:#990011FF;text-decoration:none;" %>
@@ -42,5 +42,5 @@
 <br>
 <hr>
 <% if logged_in? %>
-<%= link_to 'Create New Article',  new_article_path , class: 'btn btn-danger'%>
+<%= link_to 'Create',  new_article_path , class:"effect effect-5"%>
   <%end%>

@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
     before_action :set_article, only: [:edit, :update, :show, :destroy]
+    before_action :require_user, except: %i[index show]
     def new
         @article = Article.new
     end
@@ -7,6 +8,7 @@ class ArticlesController < ApplicationController
     def index
 
         # @articles = Article.paginate(page: params[:page], :per_page => 5)
+        
 
         @articles= Article.page(params[:page]).per(6)
     end
