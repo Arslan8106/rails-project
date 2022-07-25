@@ -1,11 +1,13 @@
 class Article < ApplicationRecord
   
   belongs_to :user
-  has_one_attached :image 
+  has_one_attached :image
+  has_many :comments 
   validates :title, presence: true, length: {minimum: 3, maximum: 50} 
   validates :descrption, presence: true, length: {minimum: 50} 
   validates :user_id, presence: true
   validate :correct_image_type
+  
 
   private
   def correct_image_type

@@ -1,9 +1,7 @@
 <div>
-<%= render 'home', class: 'front' %>
+  <%= render 'home', class: 'front' %>
 </div>
 <%= render 'article', obj: @articles %>
-  <br>
-  <br>
-  <%= paginate @articles %>
-
- 
+<br>
+<br>
+<%= paginate @articles %>

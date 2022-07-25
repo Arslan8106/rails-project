@@ -6,11 +6,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "articles#index"
-
+ 
   # root 'users#new'
   get 'about', to: 'welcome#about'
 
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
   get 'signup', to: 'users#new'
 
   resources :users, except: [:new]

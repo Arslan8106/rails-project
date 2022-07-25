@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @comment %>
+<%= render 'comment', comment: @comment %>
 
 <div>
   <%= link_to "Edit this comment", edit_comment_path(@comment) %> |

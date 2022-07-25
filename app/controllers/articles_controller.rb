@@ -10,12 +10,14 @@ class ArticlesController < ApplicationController
         # @articles = Article.paginate(page: params[:page], :per_page => 5)
         
 
-        @articles= Article.page(params[:page]).per(6)
+        @articles= Article.page(params[:page]).per(6).order(id: :desc)
+
+       
     end
 
     def create
         @article = Article.new(article_params)
-        @article.user = User.find(13)
+        @article.user = current_user
         respond_to do |format|
         if @article.save
             format.html { redirect_to article_path(@article), notice: "Atricle was successfully created." }  
@@ -40,7 +42,8 @@ class ArticlesController < ApplicationController
     end
 
     def show
- 
+ @comment = Comment.new
+@comment.article_id = @article.id
     end
 
     def destroy

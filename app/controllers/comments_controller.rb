@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1 or /comments/1.json
   def show
+
   end
 
   # GET /comments/new
@@ -21,15 +22,16 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @comment = Comment.new(comment_params)
 
+    @comment = Comment.new(comment_params)
+    @comment.article_id = params[:article_id]
+    @comment.user = current_user
+    session[:article_id] =@comment.article_id
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to comment_url(@comment), notice: "Comment was successfully created." }
-        format.json { render :show, status: :created, location: @comment }
+        format.html {redirect_to article_path(@comment.article), notice: "Comment was successfully created." } 
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,7 +66,13 @@ class CommentsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+
+
+    def load_article!
+      @article = Article.find_by!(id: comment_params[:article_id])
+    end
+
     def comment_params
-      params.require(:comment).permit(:description, :user_id)
+      params.require(:comment).permit(:description, :name)
     end
 end
