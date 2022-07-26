@@ -12,13 +12,7 @@
         </div>
       </div>
     <%else%>
-      <a class="navbar-brand effect effect-5", onclick= myFunction() style="color:white" >Rails blog</a>
-      <script>
-        function myFunction() {
-
-        alert("Please Login or Signup to View")
-         }
-      </script>
+  <%= link_to "Rails blog", root_path, class: "navbar-brand", id: "logo" %>
     <%end%>
   </div>
   <div class="abcd">
