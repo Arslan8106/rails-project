@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
     before_action :set_article, only: [:edit, :update, :show, :destroy]
-    before_action :require_user, except: %i[index show]
+    before_action :require_user, except: %i[index show search]
     def new
         @article = Article.new
     end
@@ -8,11 +8,7 @@ class ArticlesController < ApplicationController
     def index
 
         # @articles = Article.paginate(page: params[:page], :per_page => 5)
-        
-
-        @articles= Article.page(params[:page]).per(6).order(id: :desc)
-
-       
+        @articles= Article.page(params[:page]).per(6).order(id: :desc)    
     end
 
     def create
@@ -42,8 +38,19 @@ class ArticlesController < ApplicationController
     end
 
     def show
- @comment = Comment.new
-@comment.article_id = @article.id
+         @comment = Comment.new
+         @comment.article_id = @article.id
+    end
+
+    def search
+        if params[:search].blank?
+            redirect_to articles_path and return
+        else
+            @parameter = params[:search].downcase
+            @articles= Article.where("lower(title) LIKE ?", "%#{@parameter}%")
+            @user = User.all.where("lower(username) LIKE ?", "%#{@parameter}$")
+         end
+
     end
 
     def destroy

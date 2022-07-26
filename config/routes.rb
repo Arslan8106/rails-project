@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'subscribers/index'
   resources :comments
   resources :users
   
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
  
   # root 'users#new'
   get 'about', to: 'welcome#about'
-
+  get '/search', to: "articles#search"
   resources :articles do
     resources :comments
   end
@@ -22,5 +23,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   
   get 'logout', to: 'sessions#destroy'
+  resources :subscribers
+
 
 end

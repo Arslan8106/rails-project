@@ -17,4 +17,8 @@ class Article < ApplicationRecord
         errors.add(:image, 'must have an image attached')
     end
   end
+
+  def self.search(search)
+    where("lower(articles.title) LIKE :search OR lower (users.username) LIKE :search", search:"%#{search.downcase}%").uniq
+  end
 end

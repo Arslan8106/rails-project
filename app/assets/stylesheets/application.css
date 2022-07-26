@@ -188,6 +188,14 @@
 
     }
 
+    .midd3 {
+      margin: auto;
+      width: 20%;
+      padding-right: 700px;
+     
+
+    }
+
     h2,h1 {text-align: center;}
 
     .article-title {
@@ -233,6 +241,7 @@
          height: 520px;
          margin-bottom: 50px;
        }
+       
 
 
 
@@ -411,9 +420,9 @@
          font-family: 'Roboto', sans-serif;
          /* put your font-family */
          font-size: 20px;
-         padding: 7px 0px;
-         width: 120px;
-         border-radius: 5px;
+         padding: 3px 0px;
+         width: 100px;
+         border-radius: 4px;
          overflow: hidden;
         
        }
@@ -423,7 +432,8 @@
          color: white;
        }
        .style{
-         font-family:Verdana, Geneva, Tahoma, sans-serif
+         font-family:Verdana, Geneva, Tahoma, sans-serif;
+         text-align: justify;
          
        }
        .effect.effect-5:before {

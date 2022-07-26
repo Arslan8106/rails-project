@@ -1,7 +1,12 @@
 <div>
   <%= render 'home', class: 'front' %>
 </div>
+<%= render 'searchbar'%>
 <%= render 'article', obj: @articles %>
 <br>
+<br>
+
+<%=render "subscribe"%>
+
 <br>
 <%= paginate @articles %>

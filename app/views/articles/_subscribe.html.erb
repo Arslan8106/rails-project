@@ -1,0 +1,39 @@
+
+<hr style="border: 1px solid black ">
+<% if cookies[:saved_subscriber] %>
+  Thanks for signing up!
+<%else %>
+
+  <h2>Sign up for newsletter </h2>
+  <%= form_for Subscriber.new do |f|%>
+
+    <div class="from-group">
+      <div class="control-label col-sm-2">
+        <span class="head1"><%= f.label :Name%></span>
+      </div>
+      <div class="col-sm-11">
+        <%= f.text_field :name, class: "form-control", placeholder: "Enter Username", autofocus: true %>
+      </div>
+    </div>
+    <br>
+    <div class="from-group">
+      <div class="control-label col-sm-2">
+        <span class="head1"><%= f.label :email%></span>
+      </div>
+      <div class="col-sm-11">
+        <%= f.email_field :email ,class: "form-control", placeholder: "Enter email"%>
+      </div>
+    </div>
+    <br>
+    <div class="from-group">
+     
+        <div class="col-sm-11">
+          <%= f.select :source, ["Search Engine", "Social Media", "Other"], prompt: "How did you hear about us?"%>
+   
+        </div>
+        <br>
+          <%= f.submit "Subcribe", class:"effect effect-5", style:"margin-left:12px"%>
+    </div>
+  <%end%>
+<%end%>
+<hr style="border: 1px solid black ">

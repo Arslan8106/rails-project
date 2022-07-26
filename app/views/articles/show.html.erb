@@ -36,7 +36,6 @@
           <h3>Comments(<%= @article.comments.size%>):</h3>
         </u>
         <%= render partial: 'articles/comment', collection: @article.comments.reverse %>
-        
         <%if !logged_in?%>
           <a class="effect effect-5", onclick= myFunction() style="color:white" >Comment</a>
           <script>
@@ -47,18 +46,18 @@
           </script>
           <%= link_to 'Back',  articles_path, class: " effect effect-5"%>
         <%end%>
-        
       </div>
     </div>
   </div>
-   <br>
+  <br>
   <div class="row">
- 
-  <%if logged_in?%>
-    <hr style="border: 1px solid black ">
-    <div class="left">
-      <h2>Add New Comment </h2>
-      <%= render 'comments/form'%>
-    <%end%>
+    <%if logged_in?%>
+      <hr style="border: 1px solid black ">
+      <div class="left">
+        <h2>Add New Comment </h2>
+        <%= render 'comments/form'%>
+      <%end%>
+    </div>
   </div>
-</div>
+
+

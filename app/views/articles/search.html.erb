@@ -1,0 +1,16 @@
+<h2> Search Results </h2>
+
+<% @articles.each do |article|%>
+<div class="center">
+  <div class="col-sm-6 d-block mx-auto border rounded" style="background-color: rgba(255, 255, 255, .75)">
+ <h2><%= link_to article.title, article_path(article), style:"color:#990011FF" %></h2>
+  <%= image_tag article.image, :size => "500x300"%>
+ <br>
+ 
+ </div>
+ <hr>
+ </div>
+<% end %>
+ <hr style="border: 1px solid black ">
+  <%= link_to 'Back',  articles_path, class: "btn-sm py-2 effect effect-5"%>
+
