@@ -12,10 +12,12 @@
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+              <div class="waviy">
+                <span class="head1", style="color:#990011FF"><%= (@user.new_record? ? "Create an account" : "Edit Profile") %></span>
+              </div>
+              <br>
               <%= form_for @user do |f| %>
-              <form>
-                
+                <form>
                   <div class="form-outline mb-2">
                     <%= f.text_field :username, id:"form3Example1cg", class:"form-control", autofocus: true %>
                     <label class="form-label" for="form3Example1cg">Your Name</label>
@@ -33,9 +35,8 @@
                   </div>
                   <p class="text-center text-muted mt-5 mb-0"><u>Have already an account?</u> <a 
                    class="fw-bold text-body">  <%= link_to 'Login here', login_path%></a></p>
-            
-              </form>
-                  <%end%>
+                </form>
+              <%end%>
             </div>
           </div>
         </div>

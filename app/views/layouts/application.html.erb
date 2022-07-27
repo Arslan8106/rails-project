@@ -16,13 +16,17 @@
     <%=javascript_include_tag "application" %>
   </head>
   <body style="background-color: rgb(235, 235, 235)">
-    <%# #ffecd1 %>
+
     <%= render 'layouts/navigation' %>
     <br>
     <br>
     <br>
+    
     <div class="container" id = "footer1">
+    <% if !articles_path(@article)%>
       <%= render 'layouts/messages' %>
+     <%end%>
+      
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>

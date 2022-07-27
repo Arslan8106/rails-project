@@ -16,14 +16,14 @@
                 <%= image_tag article.image, :size => "300x200" ,class: 'd-block mx-auto effect-6 border rounded'%>
               <% end %>
             </div>
-
             <div>
-      <hr style="border: 1px solid black ">
+              <hr style="border: 1px solid black ">
               <%= truncate(article.descrption, length: 270,  class:'style')%>
-                   <hr style="border: 1px solid black ">
+              <hr style="border: 1px solid black ">
               <div>
                 <u> <b> <small> Created by:</b></u> <%=article.user.username if article.user%> </small> <br>
-                <u> <b> <small> Posted Time:</b></u> <%= time_ago_in_words(article.created_at) %> ago</small>  <br> <br>
+                <u> <b> <small> Posted Time:</b></u> <%= time_ago_in_words(article.created_at) %> ago</small>  <br>
+ <br>
               </div>
             </div>
             <% if logged_in? && current_user == article.user %>
@@ -45,9 +45,3 @@
 <% if logged_in? %>
   <%= link_to 'Create',  new_article_path , class:"effect effect-5"%>
 <%end%>
-
-
-
-
-
-
