@@ -29,15 +29,14 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.article_id = params[:article_id]
     @comment.user = current_user
-
-    session[:article_id] = @comment.article_id if  @comment.article_id.present?
+    session[:article_id] = @comment.article_id 
     respond_to do |format|
       if @comment.save
         format.html {redirect_to article_path(@comment.article), notice: "Comment was successfully created." } 
       else
         # new_article_comment
-       
-        format.html { render :new, status: :unprocessable_entity }
+        flash[:unprocessable_entity] = "Please fill all comment fields"
+        format.html { redirect_to articles_path(@article), status: :unprocessable_entity }
       end
     end
   end

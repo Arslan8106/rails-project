@@ -54,6 +54,7 @@
     <%if logged_in?%>
       <hr style="border: 1px solid black ">
       <div class="left">
+           <%= render 'layouts/messages' %>
         <h2>Add New Comment </h2>
         <%= render 'comments/form'%>
       <%end%>
