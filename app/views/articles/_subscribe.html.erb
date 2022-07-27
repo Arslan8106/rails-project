@@ -1,12 +1,12 @@
-
 <hr style="border: 1px solid black ">
 <% if cookies[:saved_subscriber] %>
   Thanks for signing up!
 <%else %>
-<br>
-  <u><h3 style="margin-left:13px;text-transform:uppercase"> Sign up for newsletter: </h3></u>
+  <br>
+  <u>
+    <h3 style="margin-left:13px;text-transform:uppercase"> Sign up for newsletter: </h3>
+  </u>
   <%= form_for Subscriber.new do |f|%>
-
     <div class="from-group">
       <div class="control-label col-sm-2">
         <span class="head1"><%= f.label :Name%></span>
@@ -25,13 +25,9 @@
       </div>
     </div>
     <br>
-   
-        <br>
-          <%= f.submit "Subcribe", class:"effect effect-5", style:"margin-left:12px"%>
-    </div>  
-   
- 
-  <%end%>
-
+    <br>
+    <%= f.submit "Subcribe", class:"effect effect-5", style:"margin-left:12px"%>
+  </div>
+<%end%>
 <%end%>
 <hr style="border: 1px solid black ">
