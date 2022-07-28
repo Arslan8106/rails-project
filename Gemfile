@@ -16,6 +16,7 @@ gem "erb-formatter"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
@@ -87,3 +88,6 @@ group :test do
 end
 
 gem 'pry-nav'
+
+gem "prawn", "~> 2.4"
+gem "prawn-table", "~> 0.2.2"

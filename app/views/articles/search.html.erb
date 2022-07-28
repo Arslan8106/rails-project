@@ -1,10 +1,18 @@
-<h2> Search Results </h2>
+<h2> Search Results for word <mark><%=params[:search]%></mark></h2>
+<br>
 
 <% @articles.each do |article|%>
+
 <div class="center">
   <div class="col-sm-6 d-block mx-auto border rounded" style="background-color: rgba(255, 255, 255, .75)">
+
  <h2><%= link_to article.title, article_path(article), style:"color:#990011FF" %></h2>
+ <hr style="border: 1px solid black ">
+   <%= highlight article.descrption, params[:search] %>
+ <hr style="border: 1px solid black ">
+   <% if article.image.attached? %>
   <%= image_tag article.image, :size => "500x300"%>
+  <%end%>
  <br>
  
  </div>

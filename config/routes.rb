@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   
   get 'logout', to: 'sessions#destroy'
   resources :subscribers
+  get 'download', to: 'articles#download'
 
 
 end

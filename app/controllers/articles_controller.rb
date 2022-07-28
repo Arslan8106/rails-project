@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+    include Prawn::View
     before_action :set_article, only: [:edit, :update, :show, :destroy]
     before_action :require_user, except: %i[index show search]
     def new
@@ -8,7 +9,10 @@ class ArticlesController < ApplicationController
     def index
 
         # @articles = Article.paginate(page: params[:page], :per_page => 5)
-        @articles= Article.page(params[:page]).per(6).order(id: :desc)    
+        @articles= Article.page(params[:page]).per(6).order(id: :desc)  
+      
+       
+        
     end
 
     def create
@@ -38,8 +42,26 @@ class ArticlesController < ApplicationController
     end
 
     def show
+       
          @comment = Comment.new
          @comment.article_id = @article.id
+         session[:article_id] = @article.id
+ 
+
+    end
+
+    def download 
+       
+        @article= session[:article_id]
+        @articles = Article.find(session[:article_id])
+        pdf = Prawn::Document.new
+        pdf.text @articles.title, size: 20, style: :bold, align: :center
+        pdf.text @articles.descrption, size: 10
+      
+        a_image = StringIO.open(@articles.image.download)
+        pdf.image a_image, fit: [400,600], position: :center
+        send_data(pdf.render, filename: "#{@articles.title}.pdf", type: 'application/pdf', disposition: 'inline', Creator: 'ACME Soft App')
+ 
     end
 
     def search
@@ -47,13 +69,14 @@ class ArticlesController < ApplicationController
             redirect_to articles_path and return
         else
             @parameter = params[:search].downcase
-            @articles= Article.where("lower(title) LIKE ?", "%#{@parameter}%")
+            @articles= Article.where("lower(descrption || title) LIKE ?", "%#{@parameter}%")
             @user = User.all.where("lower(username) LIKE ?", "%#{@parameter}$")
          end
 
     end
 
     def destroy
+
         @article.destroy
         respond_to do |format|
             format.html { redirect_to articles_path, notice: "Article was successfully deleted.", status: :see_other}
@@ -63,6 +86,7 @@ class ArticlesController < ApplicationController
     def edit
        
     end
+
     
 
     private
