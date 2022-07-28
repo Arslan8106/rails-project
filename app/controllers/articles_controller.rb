@@ -57,12 +57,20 @@ class ArticlesController < ApplicationController
         pdf = Prawn::Document.new
         pdf.text @articles.title, size: 20, style: :bold, align: :center
         pdf.text @articles.descrption, size: 10
-      
+       
+        if !@articles.image.attached? || !@articles.image.content_type.in?(%w(image/jpeg image/jpg))
+            pdf.text "--------------------------------------------------" , align: :center
+            pdf.text "Image does not load because of PNG format", size: 20, style: :bold, align: :center
+        
+        else
         a_image = StringIO.open(@articles.image.download)
         pdf.image a_image, fit: [400,600], position: :center
-        send_data(pdf.render, filename: "#{@articles.title}.pdf", type: 'application/pdf', disposition: 'inline', Creator: 'ACME Soft App')
- 
+         
     end
+        send_data(pdf.render, filename: "#{@articles.title}.pdf", type: 'application/pdf', disposition: 'inline', Creator: 'ACME Soft App')
+  
+end
+   
 
     def search
         if params[:search].blank?

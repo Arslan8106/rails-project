@@ -6,7 +6,7 @@ class Article < ApplicationRecord
   validates :title, presence: true, length: {minimum: 3, maximum: 50} 
   validates :descrption, presence: true, length: {minimum: 50} 
   validates :user_id, presence: true
-
+  
   validates :image, presence: true, unless: :photo_errors_exist?
 
  
