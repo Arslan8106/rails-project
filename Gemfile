@@ -73,8 +73,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-gem 'best_in_place', '~> 3.1', '>= 3.1.1'
-
+gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
 end
 
 group :production do
