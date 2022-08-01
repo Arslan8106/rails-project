@@ -34,6 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'pry', '~> 0.13.1'
+gem "sqlite3", "~> 1.4"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -66,7 +67,7 @@ group :development do
   gem "web-console"
 
   # Use sqlite3 as the database for Active Record
-  gem "sqlite3", "~> 1.4"
+
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
