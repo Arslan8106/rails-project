@@ -33,8 +33,8 @@ class ArticlesController < ApplicationController
     def update
         respond_to do |format|
         if @article.update(article_params)
+            
             format.html { redirect_to article_path(@article), notice: "Atricle was successfully updated." }  
-    
        else
         format.html { render :edit, status: :unprocessable_entity }
        end
@@ -102,7 +102,7 @@ end
         @article = Article.find(params[:id])
     end
     def article_params
-        params.require(:article).permit(:title, :descrption, :image, :user_id)
+        params.require(:article).permit(:title, :descrption, :image, :video, :user_id)
     end
 
 end

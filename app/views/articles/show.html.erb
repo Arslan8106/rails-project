@@ -1,16 +1,27 @@
 <br>
 <div class="row">
   <div class="col-sm-8 d-block mx-auto border rounded" style="background-color: rgba(255, 255, 255, .75)">
-    <h2 class="head1"style="color:#990011FF"><%= @article.title %></h2>
+   
+    <h2 class="head1" style="color:#990011FF"><%= best_in_place @article, :title, :classes => 'highlight_on_success' %></h2>
     <div class="well well-lg">
       <div class="article-body">
         <% if @article.image.attached? %>
           <%= image_tag @article.image, :size => "600x400", class: 'd-block mx-auto effect-6 border rounded'%>
         <% end %>
       </div>
-      <div class="col-sm-13 border">
+    </div>
+    <div class="col-sm-13 border">
+   
         <h4 class="center description" style="background-color:wheat"><strong>Description</strong></h4>
-        <%= simple_format(@article.descrption) %>
+       
+        <p style="margin:10px"><%=best_in_place @article, :descrption, :as => :textarea%></p>
+      
+
+      <br>
+      <div class="article-body">
+        <% if @article.video.attached? %>
+          <%= video_tag(url_for(@article.video),:size => "700x500" ,class: 'd-block mx-auto loop')%>
+        <% end %>
         <br>
         <div class="article-actions">
           <% if @article.user%>
@@ -27,15 +38,18 @@
               </ul>
             <%end%>
             <% if logged_in? && current_user == @article.user %>
-              <%= link_to 'Edit',  edit_article_path(@article) ,class:"effect effect-5" %>
+              <%= link_to 'Edit', edit_article_path(@article) ,class:"effect effect-5" %>
             <%end%>
           </div>
         </div>
         <hr style="border: 1px solid black ">
+           <div style="margin:10px" >
         <u>
           <h3>Comments(<%= @article.comments.size%>):</h3>
         </u>
+     
         <%= render partial: 'articles/comment', collection: @article.comments.reverse %>
+        </div>
         <%if !logged_in?%>
           <a class="effect effect-5", onclick= myFunction() style="color:white" >Comment</a>
           <script>
@@ -50,13 +64,12 @@
     </div>
   </div>
   <br>
-<%= link_to 'PDF', download_path ,  target:"_blank", class:"effect effect-5" %>
-
+  <%= link_to 'PDF', download_path ,  target:"_blank", class:"effect effect-5" %>
   <div class="row">
     <%if logged_in?%>
       <hr style="border: 1px solid black ">
       <div class="left">
-           <%= render 'layouts/messages' %>
+        <%= render 'layouts/messages' %>
         <h2>Add New Comment </h2>
         <%= render 'comments/form'%>
       <%end%>

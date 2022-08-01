@@ -5,13 +5,16 @@ class UsersController < ApplicationController
   # GET /users or /users.json
   def index
 
-    @users= User.page(params[:page]).per(5)
+    @users= User.page(params[:page]).per(5).order(id: :desc) 
+
   end
 
   # GET /users/1 or /users/1.json
   def show
-    
+
+    # @articles= Article.page(params[:page]).per(6).order(id: :desc) 
     # @user_articles = @users.articles.page(params[:page]).per(5)
+ 
   end
 
   # GET /users/new
@@ -33,7 +36,8 @@ class UsersController < ApplicationController
        
    respond_to do |format|
       if @user.save
-
+      
+        UserMailer.with(username: @user).welcome_email.deliver_later
         session[:user_id] = @user.id
         format.html { redirect_to user_url(@user), notice: "User was successfully created." }
         

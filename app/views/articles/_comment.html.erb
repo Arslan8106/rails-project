@@ -1,6 +1,6 @@
-<div>
-  <li><b>Comment by <%= comment.name %></b></li>
-  <p class="comment"><%= comment.description %></p>
+<div class="container">
+  <li><b>Comment by <%= best_in_place comment, :name %></b></li>
+  <p class="comment"><%=best_in_place comment, :description %></p>
   <u>
     <p>Commented <%= time_ago_in_words(comment.created_at) %> ago.</p>
   </u>

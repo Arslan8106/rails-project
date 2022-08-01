@@ -2,6 +2,7 @@ class Article < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
+  has_one_attached :video
   has_many :comments 
   validates :title, presence: true, length: {minimum: 3, maximum: 50} 
   validates :descrption, presence: true, length: {minimum: 50} 
@@ -13,7 +14,6 @@ class Article < ApplicationRecord
 
 
   private
-
   def self.search(search)
     where("lower(articles.title) LIKE :search OR lower(articles.descrption) LIKE :search OR lower (users.username) LIKE :search", search:"%#{search.downcase}%").uniq
   end

@@ -6,30 +6,29 @@
     <div class="child">
       <br>
       <div class="row">
-        <div class="col-sm-15 d-block mx-auto border rounded " style="background-color: rgba(255, 255, 255, .75)">
+        <div class="col-sm-16 d-block mx-auto border rounded " style="background-color: rgba(255, 255, 255, .75)">
           <div class="well well-lg">
             <div class="article-title effect-5">
-              <%= link_to article.title, article_path(article), style:"color:#990011FF;text-decoration:none;" %>
+            <b>  <%= link_to article.title, article_path(article), style:"color:#355070;text-decoration:none;" %></b>
             </div>
             <div>
               <% if article.image.attached? %>
                 <%= image_tag article.image, :size => "300x200" ,class: 'd-block mx-auto effect-6 border rounded'%>
-                <%else%>
+              <%else%>
               <% end %>
-              
             </div>
-
             <div>
-      <hr style="border: 1px solid black ">
+              <hr style="border: 1px solid black ">
               <%= truncate(article.descrption, length: 270,  class:'style')%>
-                   <hr style="border: 1px solid black ">
+              <hr style="border: 1px solid black ">
               <div>
                 <u> <b> <small> Created by:</b></u> <%=article.user.username if article.user%> </small> <br>
-                <u> <b> <small> Posted Time:</b></u> <%= time_ago_in_words(article.created_at) %> ago</small>  <br> <br>
+                <u> <b> <small> Posted Time:</b></u> <%= time_ago_in_words(article.created_at) %> ago</small>  <br>
+ <br>
               </div>
             </div>
             <% if logged_in? && current_user == article.user %>
-              <%= link_to "Edit", edit_article_path(article), class:"effect effect-5"  %>
+              <%= link_to "Edit", edit_article_path(article), class:"effect effect-5 "  %>
               <%= link_to "Delete", article_path(article), method: :delete,
               data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
               class:"effect effect-5" %>
@@ -45,11 +44,5 @@
 <br>
 <hr>
 <% if logged_in? %>
-  <%= link_to 'Create',  new_article_path , class:"effect effect-5"%>
+  <%= link_to 'Create',  new_article_path , class:"effect effect-5 "%>
 <%end%>
-
-
-
-
-
-

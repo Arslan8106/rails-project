@@ -13,13 +13,13 @@
           <span class="head1"><%= f.label :Title%></span>
         </div>
         <div class="col-sm-11">
-          <%= f.text_field :title, class: "form-control",  placeholder: "Title of article", autofocus: true %>
+          <%=  f.text_field :title, class: "form-control",  placeholder: "Title of article", autofocus: true %>
         </div>
       </div>
       <br>
       <div class="from-group">
         <div class="control-label col-sm-2">
-          <span class="head1"><%= f.label :Description%></span>
+          <span class="head1"><%= f.label :Description %></span>
         </div>
         <div class="col-sm-11">
           <%= f.text_area :descrption , rows: 8, class: "form-control", placeholder: "Body of article"%>
@@ -32,6 +32,15 @@
         </div>
         <div class="col-sm-11">
           <%= f.file_field :image , rows: 8, style:"border 2px"%>
+        </div>
+      </div>
+      <br>
+      <div class="from-group">
+        <div class="control-label col-sm-2">
+          <span class="head1"><%= f.label :Video%></span>
+        </div>
+        <div class="col-sm-11">
+          <%= f.file_field :video , rows: 8, style:"border 2px"%>
         </div>
       </div>
       <br>

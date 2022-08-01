@@ -7,8 +7,8 @@
         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Article
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item"><%= link_to "Create New Article", new_article_path,style:"color:#990011FF;text-decoration:none;"  %></a>
-          <a class="dropdown-item"><%= link_to "View Articles", articles_path ,style:"color:#990011FF;text-decoration:none;" %></a>
+          <a class="dropdown-item"><%= link_to "Create Article", new_article_path,style:"color:black;text-decoration:none;padding:5px"%></a>
+          <a class="dropdown-item"><%= link_to "View Articles", articles_path ,style:"color:black;text-decoration:none;padding:5px" %></a>
         </div>
       </div>
     <%else%>
@@ -22,9 +22,9 @@
           Profile
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item"><%= link_to "View your profile", user_path(current_user),style:"color:#990011FF;text-decoration:none;"  %></a>
-          <a class="dropdown-item"><%= link_to "Edit your profile", edit_user_path(current_user) ,style:"color:#990011FF;text-decoration:none;" %></a>
-          <a class="dropdown-item"><%= link_to "View Users", users_path ,style:"color:#990011FF;text-decoration:none;" %></a>
+          <a class="dropdown-item"><%= link_to "View your profile", user_path(current_user),style:"color:black;text-decoration:none;padding:5px"  %></a>
+          <a class="dropdown-item"><%= link_to "Edit your profile", edit_user_path(current_user) ,style:"color:black;text-decoration:none;padding:5px" %></a>
+          <a class="dropdown-item"><%= link_to "View Users", users_path ,style:"color:black;text-decoration:none;padding:5px" %></a>
         </div>
       </li>
       <%= link_to 'Logout', logout_path, method: :delete, class:" effect effect-5" %>

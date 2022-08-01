@@ -8,7 +8,7 @@
         <br>
         <%= link_to gravatar_for(user), user_path(user) %>
         <div class="article-title">
-          <%= link_to user.username, user_path(user), style:"color:#990011FF" %>
+          <%= link_to user.username, user_path(user), style:"color:#355070" %>
         </div>
         <small><%= pluralize(user.articles.count, "article") if user.articles %></small>
       </div>

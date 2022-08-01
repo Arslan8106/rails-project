@@ -1,7 +1,5 @@
 
-@import 'bootstrap/scss/bootstrap';  
-@import "../node_modules/bootstrap/scss/bootstrap";
-@import "../stylesheets/custom.css.scss";
+
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
 
 
@@ -19,6 +17,7 @@
  *
  *= require_tree .
  *= require_self
+
  *= require style.css.scss
  */
 
