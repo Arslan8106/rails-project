@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/cavi21/letter_opener.git
+  revision: 3be81cb10e4c71f79278db22aa5e10aca64418f0
+  specs:
+    letter_opener (1.0.0)
+      launchy (>= 2.2.0)
+
+GIT
   remote: https://github.com/mmotherwell/best_in_place
   revision: 88eb3052623a9a6cd346864d2aca05021c2f80d0
   specs:
@@ -142,6 +149,8 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    launchy (2.5.0)
+      addressable (~> 2.7)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -292,6 +301,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   kaminari (~> 1.2, >= 1.2.2)
+  letter_opener!
   pg
   prawn (~> 2.4)
   prawn-table (~> 0.2.2)

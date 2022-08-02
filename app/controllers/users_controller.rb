@@ -37,7 +37,8 @@ class UsersController < ApplicationController
    respond_to do |format|
       if @user.save
       
-        UserMailer.with(username: @user).welcome_email.deliver_later
+        UserMailer.with(username: @user).welcome_email.deliver_later 
+        
         session[:user_id] = @user.id
         format.html { redirect_to user_url(@user), notice: "User was successfully created." }
         

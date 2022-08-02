@@ -1,1 +1,22 @@
-<h2>Hello</h2>
+<p style="color: green"><%= notice %></p>
+<h2>All Subscribers</h2>
+<br>
+<% @subscriber.each do |subscriber| %>
+  <ul class="container">
+    <div class="center">
+      <div class="col-sm-4 d-block mx-auto border" style="background-color:#F5F0E1">
+        <br>
+        
+        <div class="article-title" style="color:#355070">
+          <%= subscriber.name  %>
+        </div>
+        <small><%=subscriber.email%></small>
+      </div>
+    </ul>
+
+  
+
+<% end %>
+  <div class="col-sm-2 d-block mx-auto ">
+  </div>
+</div>

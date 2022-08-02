@@ -73,12 +73,14 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+    gem "letter_opener", :git => 'https://github.com/cavi21/letter_opener.git'
 
 end
 
 group :production do
   gem 'pg'
   gem 'rails_12factor'
+
 end
 
 group :test do
@@ -89,7 +91,6 @@ group :test do
 end
 
 gem 'pry-nav'
-
 gem "prawn", "~> 2.4"
 gem "prawn-table", "~> 0.2.2"
 gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
