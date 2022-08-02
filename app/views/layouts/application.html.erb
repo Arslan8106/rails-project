@@ -6,8 +6,8 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <!-- CSS only -->
-       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> 
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <%= javascript_importmap_tags %>
@@ -16,17 +16,14 @@
     <%=javascript_include_tag "application" %>
   </head>
   <body style="background-color: rgb(235, 235, 235)">
-
     <%= render 'layouts/navigation' %>
     <br>
     <br>
     <br>
-    
     <div class="container" id = "footer1">
-    <% if !articles_path(@article)%>
-      <%= render 'layouts/messages' %>
-     <%end%>
-      
+      <% if !articles_path(@article)%>
+        <%= render 'layouts/messages' %>
+      <%end%>
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
@@ -39,8 +36,6 @@
 
       window.location.reload();
       }
-
-     
     </script>
   </body>
 </html>
