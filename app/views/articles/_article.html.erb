@@ -9,7 +9,7 @@
         <div class="col-sm-16 d-block mx-auto border rounded " style="background-color: rgba(255, 255, 255, .75)">
           <div class="well well-lg">
             <div class="article-title effect-5">
-            <b>  <%= link_to article.title, article_path(article), style:"color:#355070;text-decoration:none;" %></b>
+              <b>  <%= link_to article.title, article_path(article), style:"color:#355070;text-decoration:none;" %></b>
             </div>
             <div>
               <% if article.image.attached? %>
@@ -24,7 +24,7 @@
               <div>
                 <u> <b> <small> Created by:</b></u> <%=article.user.username if article.user%> </small> <br>
                 <u> <b> <small> Posted Time:</b></u> <%= time_ago_in_words(article.created_at) %> ago</small>  <br>
- <br>
+                <br>
               </div>
             </div>
             <% if logged_in? && current_user == article.user %>

@@ -2,17 +2,15 @@ class ArticlesController < ApplicationController
     include Prawn::View
     before_action :set_article, only: [:edit, :update, :show, :destroy]
     before_action :require_user, except: %i[index show search]
+    
+    
     def new
         @article = Article.new
     end
 
     def index
-
         # @articles = Article.paginate(page: params[:page], :per_page => 5)
-        @articles= Article.page(params[:page]).per(6).order(id: :desc)  
-      
-       
-        
+        @articles= Article.page(params[:page]).per(6).order(id: :desc)    
     end
 
     def create
@@ -23,35 +21,29 @@ class ArticlesController < ApplicationController
             format.html { redirect_to article_path(@article), notice: "Atricle was successfully created." }  
           else
             format.html { render :new, status: :unprocessable_entity }
-          end
-        
-        end
-
-       
+          end       
+        end 
     end
 
     def update
+    
         respond_to do |format|
         if @article.update(article_params)
             
             format.html { redirect_to article_path(@article), notice: "Atricle was successfully updated." }  
        else
-        format.html { render :edit, status: :unprocessable_entity }
+            format.html { render :edit, status: :unprocessable_entity }
        end
     end
     end
 
-    def show
-       
+    def show  
          @comment = Comment.new
          @comment.article_id = @article.id
          session[:article_id] = @article.id
- 
-
     end
 
-    def download 
-       
+    def download      
         @article= session[:article_id]
         @articles = Article.find(session[:article_id])
         pdf = Prawn::Document.new
@@ -63,13 +55,11 @@ class ArticlesController < ApplicationController
             pdf.text "Image does not load because of PNG format", size: 20, style: :bold, align: :center
         
         else
-        a_image = StringIO.open(@articles.image.download)
-        pdf.image a_image, fit: [400,600], position: :center
-         
+            a_image = StringIO.open(@articles.image.download)
+            pdf.image a_image, fit: [400,600], position: :center         
+        end
+            send_data(pdf.render, filename: "#{@articles.title}.pdf", type: 'application/pdf', disposition: 'inline', Creator: 'ACME Soft App') 
     end
-        send_data(pdf.render, filename: "#{@articles.title}.pdf", type: 'application/pdf', disposition: 'inline', Creator: 'ACME Soft App')
-  
-end
    
 
     def search
@@ -84,7 +74,6 @@ end
     end
 
     def destroy
-
         @article.destroy
         respond_to do |format|
             format.html { redirect_to articles_path, notice: "Article was successfully deleted.", status: :see_other}

@@ -32,6 +32,18 @@
       <%= link_to 'Login', login_path,  class: "effect effect-5" %>
       <%= link_to 'Signup', signup_path,  class: "effect effect-5" %>
     <%end%>
-  </div>
+  </div>    <script>
+      if(!!window.performance && window.performance.navigation.type === 2){
+
+
+      console.log('Reloading');
+
+
+      window.location.reload();
+      }
+    </script>
+  </body>
+</html>
+
 </div>
 </nav>

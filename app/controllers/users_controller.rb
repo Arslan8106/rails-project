@@ -40,7 +40,7 @@ class UsersController < ApplicationController
         UserMailer.with(username: @user).welcome_email.deliver_later 
         
         session[:user_id] = @user.id
-        format.html { redirect_to user_url(@user), notice: "User was successfully created." }
+        format.html { redirect_to articles_path, notice: "User was successfully created." }
         
       else
         format.html { render :new, status: :unprocessable_entity } 
